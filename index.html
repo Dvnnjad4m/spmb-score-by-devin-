@@ -7,83 +7,185 @@
     <style>
         :root {
             --primary-color: #2b6cb0;
-            --success-color: #38a169;
-            --warning-color: #dd6b20;
-            --bg-gradient: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            --primary-hover: #1a528d;
+            --success-color: #2f855a;
+            --warning-color: #c05621;
+            --text-dark: #2d3748;
+            --text-muted: #718096;
+            --bg-gradient: linear-gradient(135deg, #f7fafc, #edf2f7);
+            --card-bg: #ffffff;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background: var(--bg-gradient);
+            color: var(--text-dark);
             margin: 0;
-            padding: 0;
+            padding: 20px;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
+            box-sizing: border-box;
         }
 
-        /* Container Utama */
+        /* Container Utama - Dibuat lebih slim dan clean */
         .app-container {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            width: 90%;
-            max-width: 800px;
+            background: var(--card-bg);
+            padding: 35px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 720px;
             position: relative;
-            min-height: 400px;
+            box-sizing: border-box;
         }
 
         /* Halaman-halaman */
         .page { display: none; }
         .active { display: block; }
 
-        /* Typography */
-        .welcome-msg { font-size: 28px; font-weight: bold; color: var(--primary-color); margin-bottom: 20px; text-align: center; }
-        .intro-text { color: #4a5568; line-height: 1.6; margin-bottom: 30px; text-align: center; background: #f8fafc; padding: 20px; border-radius: 12px; }
-        h2 { text-align: center; color: #2c3e50; margin-bottom: 25px; }
-        h3 { color: #34495e; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; margin-top: 25px; }
+        /* Typography - Mengecilkan ukuran teks agar lebih proporsional */
+        .welcome-msg { 
+            font-size: 22px; 
+            font-weight: 700; 
+            color: var(--primary-color); 
+            margin-bottom: 12px; 
+            text-align: center; 
+            letter-spacing: -0.5px;
+        }
+        .intro-text { 
+            color: var(--text-muted); 
+            line-height: 1.6; 
+            margin-bottom: 25px; 
+            text-align: center; 
+            background: #f8fafc; 
+            padding: 16px; 
+            border-radius: 10px; 
+            font-size: 14px;
+        }
+        h2 { 
+            text-align: center; 
+            color: var(--text-dark); 
+            font-size: 20px; 
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 20px; 
+        }
+        h3 { 
+            color: var(--text-dark); 
+            font-size: 15px;
+            font-weight: 600;
+            border-bottom: 2px solid #edf2f7; 
+            padding-bottom: 6px; 
+            margin-top: 20px; 
+            margin-bottom: 15px;
+        }
 
-        /* Buttons */
+        /* Buttons - Dibuat lebih compact dan profesional */
         .btn {
             background: var(--primary-color);
             color: white;
-            padding: 12px 25px;
+            padding: 10px 22px;
             border: none;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: bold;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
             cursor: pointer;
-            transition: 0.2s;
+            transition: all 0.2s ease;
             display: block;
             margin: 10px auto;
             width: fit-content;
             text-decoration: none;
             text-align: center;
         }
-        .btn:hover { background: #2c5282; transform: translateY(-2px); }
-        .btn-full { width: 100%; border-radius: 10px; margin: 15px 0; font-size: 15px; }
+        .btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+        .btn-full { 
+            width: 100%; 
+            border-radius: 8px; 
+            margin: 10px 0; 
+            font-size: 14px; 
+            background: #f7fafc;
+            color: var(--text-dark);
+            border: 1px solid #e2e8f0;
+            text-align: left;
+            padding: 14px 20px;
+        }
+        .btn-full:hover {
+            background: #edf2f7;
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: none;
+        }
 
-        /* Form Styling */
-        .grid-input { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        /* Form Styling - Pengoptimalan Grid & Ukuran Input Box */
+        .grid-input { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 12px; 
+        }
         @media (max-width: 600px) { .grid-input { grid-template-columns: 1fr; } }
-        .input-group { margin-bottom: 10px; }
-        label { display: block; margin-bottom: 4px; font-weight: 600; color: #4a5568; font-size: 12px; }
-        input, select { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; box-sizing: border-box;}
-        .semester-box { background-color: #f7fafc; border: 1px solid #edf2f7; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
-        .semester-title { font-weight: bold; color: var(--primary-color); margin-bottom: 10px; border-bottom: 1px dashed #cbd5e0; }
         
-        /* Result */
-        .result { margin-top: 25px; padding: 20px; background: #f0fff4; border-left: 5px solid var(--success-color); border-radius: 8px; display: none; }
-        .score-display { font-size: 42px; font-weight: bold; text-align: center; color: #276749; }
-        .details { font-size: 14px; color: #4a5568; line-height: 1.6; background: white; padding: 15px; border-radius: 6px; border: 1px solid #e2e8f0; margin-top: 10px; }
-        .live-sem-avg { background: #e2e8f0; padding: 6px; border-radius: 6px; font-weight: bold; text-align: center; margin-top: 10px; font-size: 12px; }
+        .input-group { margin-bottom: 4px; }
+        
+        label { 
+            display: block; 
+            margin-bottom: 5px; 
+            font-weight: 500; 
+            color: var(--text-dark); 
+            font-size: 13px; 
+        }
+        input, select { 
+            width: 100%; 
+            padding: 8px 12px; 
+            border: 1px solid #cbd5e0; 
+            border-radius: 6px; 
+            font-size: 13.5px; 
+            color: var(--text-dark);
+            box-sizing: border-box;
+            background-color: #fff;
+            transition: border-color 0.15s ease;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        /* Kotak Blok Semester - Lebih rapi dan tidak makan tempat */
+        .semester-box { 
+            background-color: #f8fafc; 
+            border: 1px solid #edf2f7; 
+            padding: 16px; 
+            border-radius: 8px; 
+            margin-bottom: 16px; 
+        }
+        .semester-title { 
+            font-weight: 700; 
+            color: var(--primary-color); 
+            margin-bottom: 12px; 
+            font-size: 13px;
+            letter-spacing: 0.5px;
+            border-bottom: 1px dashed #e2e8f0; 
+            padding-bottom: 4px;
+        }
+        
+        /* Result - Dibuat minimalis elegan */
+        .result { 
+            margin-top: 25px; 
+            padding: 20px; 
+            background: #f0fff4; 
+            border: 1px solid #c6f6d5;
+            border-left: 4px solid var(--success-color); 
+            border-radius: 8px; 
+            display: none; 
+        }
+        .score-display { font-size: 36px; font-weight: 700; text-align: center; color: var(--success-color); margin: 5px 0; }
+        .details { font-size: 13px; color: var(--text-muted); line-height: 1.5; background: white; padding: 12px; border-radius: 6px; border: 1px solid #e2e8f0; margin-top: 10px; }
+        .live-sem-avg { background: #edf2f7; padding: 5px; border-radius: 4px; font-weight: 600; text-align: center; margin-top: 12px; font-size: 11.5px; color: var(--text-dark); }
 
-        /* Watermark & Warning */
-        .warning-sign { color: var(--warning-color); font-weight: bold; font-size: 13px; text-align: center; display: block; margin-top: 20px; }
-        .intro-watermark { text-align: center; font-size: 11px; color: #a0aec0; font-style: italic; margin-top: 10px; display: block; }
+        /* Watermark & Warning - Dibuat tenggelam dan proporsional */
+        .warning-sign { color: var(--warning-color); font-weight: 600; font-size: 12px; text-align: center; display: block; margin-top: 18px; }
+        .intro-watermark { text-align: center; font-size: 11px; color: #a0aec0; font-style: italic; margin-top: 8px; display: block; opacity: 0.8; }
     </style>
 </head>
 <body>
@@ -98,12 +200,12 @@
             </div>
             <button class="btn" onclick="showPage('page-menu')">Lanjut ke Pilihan Jalur</button>
             <span class="warning-sign">⚠️ Nilai akhir hanya perkiraan!</span>
-            <span class="intro-watermark">Made by ur greatest alumni –arvnn</span>
+            <span class="intro-watermark">Made by ur greatest alumni –dvnn</span>
         </div>
 
         <div id="page-menu" class="page">
             <h2>Pilih Jalur Prestasi</h2>
-            <button class="btn btn-full" onclick="startJalur(1)">1. Jalur Prestasi Akademik Raport</button>
+            <button class="btn btn-full" onclick="startJalur(1)">1. Jalur Prestasi Academic Raport</button>
             <button class="btn btn-full" onclick="startJalur(2)">2. Jalur Prestasi Kejuaraan Akademik</button>
             <button class="btn btn-full" onclick="startJalur(3)">3. Jalur Prestasi Kejuaraan Non Akademik</button>
             <button class="btn btn-full" onclick="startJalur(4)">4. Jalur Prestasi Kepemimpinan</button>
@@ -172,7 +274,7 @@
                 <label>Skor Tingkat Jabatan/Sertifikat Organisasi (50%)</label>
                 <input type="number" id="skor-organisasi" placeholder="0-100">
             </div>
-            <p style="font-size: 11px; color: #718096;">*Nilai ini akan digabung dengan 50% Nilai Raport yang Anda isi.</p>
+            <p style="font-size: 11px; color: #718096; margin-bottom: 15px;">*Nilai ini akan digabung dengan 50% Nilai Raport yang Anda isi.</p>
             <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
                 <button class="btn" style="background:#718096; margin: 0;" onclick="showPage('page-raport')">Kembali Isi Raport</button>
                 <button class="btn" style="margin: 0;" onclick="hitungFinalLead()">Hitung Skor Akhir</button>
@@ -180,7 +282,7 @@
         </div>
 
         <div id="hasil-kalkulasi" class="result">
-            <h4 style="text-align:center; margin:0; color:#276749;">ESTIMASI SKOR AKHIR</h4>
+            <h4 style="text-align:center; margin:0; color:#2f855a; font-size: 14px; letter-spacing: 0.5px;">ESTIMASI SKOR AKHIR</h4>
             <div class="score-display" id="skor-total">0.00</div>
             <div class="details" id="detail-perhitungan"></div>
             <button class="btn" style="margin-top:20px" onclick="tutupHasil()">Kembali Periksa Data</button>
@@ -260,7 +362,6 @@
             return sum;
         }
 
-        // HITUNG JALUR 1 & 2
         function hitungFinalAkad() {
             let sumR = getSumR();
             if (sumR === -1) { alert("Lengkapi nilai raport semester 1-5!"); return; }
@@ -287,7 +388,6 @@
             tampilkanHasil(final, det);
         }
 
-        // HITUNG JALUR 3
         function hitungFinalNonAkad() {
             let s = parseFloat(document.getElementById('n-sertif-non').value) || 0;
             let u = parseFloat(document.getElementById('n-uji-komp').value) || 0;
@@ -295,7 +395,6 @@
             tampilkanHasil(final, `Sertifikat (30%): ${(s*0.3).toFixed(2)}<br>Uji Komp (70%): ${(u*0.7).toFixed(2)}`);
         }
 
-        // HITUNG JALUR 4
         function hitungFinalLead() {
             let sumR = getSumR();
             if (sumR === -1) { alert("Lengkapi nilai raport semester 1-5!"); return; }
