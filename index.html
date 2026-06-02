@@ -113,7 +113,10 @@
         <div id="page-raport" class="page">
             <h2 id="raport-title">Input Nilai Raport</h2>
             <div id="semester-containers"></div>
-            <button class="btn" onclick="prosesRaport()">Lanjut ke Parameter Akhir</button>
+            <div style="display: flex; justify-content: center; gap: 10px;">
+                <button class="btn" style="background:#718096; margin: 10px 0;" onclick="showPage('page-menu')">Kembali Pilih Jalur</button>
+                <button class="btn" style="margin: 10px 0;" onclick="prosesRaport()">Lanjut ke Parameter Akhir</button>
+            </div>
         </div>
 
         <div id="page-param-akad" class="page">
@@ -139,7 +142,10 @@
                     <input type="number" id="poin-sertif-akad" placeholder="Contoh: 15">
                 </div>
             </div>
-            <button class="btn" onclick="hitungFinalAkad()">Hitung Skor Akhir</button>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <button class="btn" style="background:#718096; margin: 0;" onclick="showPage('page-raport')">Kembali Isi Raport</button>
+                <button class="btn" style="margin: 0;" onclick="hitungFinalAkad()">Hitung Skor Akhir</button>
+            </div>
         </div>
 
         <div id="page-jalur3" class="page">
@@ -154,7 +160,10 @@
                     <input type="number" id="n-uji-komp" placeholder="0-100">
                 </div>
             </div>
-            <button class="btn" onclick="hitungFinalNonAkad()">Hitung Skor Akhir</button>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <button class="btn" style="background:#718096; margin: 0;" onclick="showPage('page-menu')">Kembali</button>
+                <button class="btn" style="margin: 0;" onclick="hitungFinalNonAkad()">Hitung Skor Akhir</button>
+            </div>
         </div>
 
         <div id="page-jalur4-param" class="page">
@@ -164,14 +173,17 @@
                 <input type="number" id="skor-organisasi" placeholder="0-100">
             </div>
             <p style="font-size: 11px; color: #718096;">*Nilai ini akan digabung dengan 50% Nilai Raport yang Anda isi.</p>
-            <button class="btn" onclick="hitungFinalLead()">Hitung Skor Akhir</button>
+            <div style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
+                <button class="btn" style="background:#718096; margin: 0;" onclick="showPage('page-raport')">Kembali Isi Raport</button>
+                <button class="btn" style="margin: 0;" onclick="hitungFinalLead()">Hitung Skor Akhir</button>
+            </div>
         </div>
 
         <div id="hasil-kalkulasi" class="result">
             <h4 style="text-align:center; margin:0; color:#276749;">ESTIMASI SKOR AKHIR</h4>
             <div class="score-display" id="skor-total">0.00</div>
             <div class="details" id="detail-perhitungan"></div>
-            <button class="btn" style="margin-top:20px" onclick="location.reload()">Reset / Hitung Ulang</button>
+            <button class="btn" style="margin-top:20px" onclick="tutupHasil()">Kembali Periksa Data</button>
         </div>
 
     </div>
@@ -297,6 +309,10 @@
             document.getElementById('skor-total').innerText = score.toFixed(2);
             document.getElementById('detail-perhitungan').innerHTML = detail;
             window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function tutupHasil() {
+            document.getElementById('hasil-kalkulasi').style.display = 'none';
         }
     </script>
 </body>
