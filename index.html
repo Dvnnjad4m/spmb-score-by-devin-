@@ -24,273 +24,278 @@
             position: relative;
         }
 
-        /* --- STYLING HALAMAN INTRO --- */
-        #intro-screen {
+        /* Container Utama */
+        .app-container {
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             width: 90%;
-            max-width: 600px;
-            text-align: center;
-            display: block;
+            max-width: 800px;
             position: relative;
-            padding-bottom: 80px; /* Ruang ekstra untuk warning + watermark */
+            min-height: 400px;
         }
 
-        .welcome-msg {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
+        /* Halaman-halaman */
+        .page { display: none; }
+        .active { display: block; }
 
-        .intro-text {
-            color: #4a5568;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            text-align: left;
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-color);
-        }
+        /* Typography */
+        .welcome-msg { font-size: 28px; font-weight: bold; color: var(--primary-color); margin-bottom: 20px; text-align: center; }
+        .intro-text { color: #4a5568; line-height: 1.6; margin-bottom: 30px; text-align: center; background: #f8fafc; padding: 20px; border-radius: 12px; }
+        h2 { text-align: center; color: #2c3e50; margin-bottom: 25px; }
+        h3 { color: #34495e; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; margin-top: 25px; }
 
-        .guide-box {
-            text-align: left;
-            margin-bottom: 30px;
-        }
-
-        .guide-box h4 {
-            margin-bottom: 10px;
-            color: #2d3748;
-        }
-
-        .guide-box ul {
-            padding-left: 20px;
-            color: #718096;
-            font-size: 14px;
-        }
-
-        .start-btn {
+        /* Buttons */
+        .btn {
             background: var(--primary-color);
             color: white;
-            padding: 15px 40px;
+            padding: 12px 25px;
             border: none;
             border-radius: 30px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-            margin-bottom: 25px;
-        }
-
-        .start-btn:hover {
-            background: #2c5282;
-            transform: translateY(-2px);
-        }
-
-        /* WARNING SIGN - Sekarang di bawah tengah */
-        .warning-sign {
-            color: var(--warning-color);
-            font-weight: bold;
-            font-size: 13px;
-            margin-bottom: 10px;
+            transition: 0.2s;
             display: block;
+            margin: 10px auto;
+            width: fit-content;
+            text-decoration: none;
+            text-align: center;
         }
+        .btn:hover { background: #2c5282; transform: translateY(-2px); }
+        .btn-full { width: 100%; border-radius: 10px; margin: 15px 0; font-size: 15px; }
 
-        /* WATERMARK - Paling bawah */
-        .intro-watermark {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 11px;
-            color: #a0aec0;
-            font-style: italic;
-            letter-spacing: 0.5px;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        /* --- STYLING HALAMAN UTAMA --- */
-        #main-app {
-            display: none;
-            background: white;
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            width: 95%;
-            max-width: 800px;
-            margin: 20px;
-        }
-
-        h2 { text-align: center; color: #2c3e50; margin: 0 0 25px 0; }
-        h3 { color: #34495e; border-bottom: 2px solid #e2e8f0; padding-bottom: 5px; margin-top: 25px; }
+        /* Form Styling */
         .grid-input { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         @media (max-width: 600px) { .grid-input { grid-template-columns: 1fr; } }
         .input-group { margin-bottom: 10px; }
         label { display: block; margin-bottom: 4px; font-weight: 600; color: #4a5568; font-size: 12px; }
-        input, select { width: 100%; padding: 8px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 14px; box-sizing: border-box;}
         .semester-box { background-color: #f7fafc; border: 1px solid #edf2f7; padding: 15px; border-radius: 10px; margin-bottom: 20px; }
         .semester-title { font-weight: bold; color: var(--primary-color); margin-bottom: 10px; border-bottom: 1px dashed #cbd5e0; }
-        .calc-btn { width: 100%; padding: 14px; background: var(--primary-color); color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        
+        /* Result */
         .result { margin-top: 25px; padding: 20px; background: #f0fff4; border-left: 5px solid var(--success-color); border-radius: 8px; display: none; }
-        .score-display { font-size: 36px; font-weight: bold; text-align: center; color: #276749; }
+        .score-display { font-size: 42px; font-weight: bold; text-align: center; color: #276749; }
         .details { font-size: 14px; color: #4a5568; line-height: 1.6; background: white; padding: 15px; border-radius: 6px; border: 1px solid #e2e8f0; margin-top: 10px; }
         .live-sem-avg { background: #e2e8f0; padding: 6px; border-radius: 6px; font-weight: bold; text-align: center; margin-top: 10px; font-size: 12px; }
+
+        /* Watermark & Warning */
+        .warning-sign { color: var(--warning-color); font-weight: bold; font-size: 13px; text-align: center; display: block; margin-top: 20px; }
+        .intro-watermark { text-align: center; font-size: 11px; color: #a0aec0; font-style: italic; margin-top: 10px; display: block; }
     </style>
 </head>
 <body>
 
-    <div id="intro-screen">
-        <div class="welcome-msg">Hellou warga mpc!</div>
-        <div class="intro-text">
-            Selamat datang di aplikasi perhitungan mandiri <strong>SPMB Jalur Prestasi Raport</strong>. 
-            Jalur ini merupakan seleksi berdasarkan konsistensi nilai akademik Anda selama 5 semester terakhir. 
-            Aplikasi ini akan membantu Anda mengestimasi skor akhir berdasarkan pembobotan nilai raport dan TKA.
-        </div>
-
-        <div class="guide-box">
-            <h4>Panduan Memasukkan Nilai:</h4>
-            <ul>
-                <li>Siapkan nilai rata-rata raport dari Semester 1 sampai Semester 5.</li>
-                <li>Masukkan nilai mata pelajaran yang berlaku pada tiap blok semester.</li>
-                <li>Input nilai TKA Bahasa Indonesia dan Matematika pada kolom yang tersedia.</li>
-                <li>Pilih skema bobot (40%:60% atau 50%:50%) sesuai ketentuan.</li>
-                <li>Klik tombol hitung untuk melihat akumulasi skor akhir Anda.</li>
-            </ul>
-        </div>
-
-        <button class="start-btn" onclick="showApp()">Lanjut ke Kalkulator</button>
+    <div class="app-container">
         
-        <span class="warning-sign">⚠️ Nilai akhir hanya perkiraan!</span>
-        <div class="intro-watermark">Made by ur greatest alumni –dvnn</div>
-    </div>
-
-    <div id="main-app">
-        <h2>Kalkulator Skor SPMB</h2>
-
-        <div class="input-group">
-            <label for="bobot">Pilih Skema Bobot Penilaian:</label>
-            <select id="bobot">
-                <option value="opsi1">Opsi 1: Raport 50% + TKA 50%</option>
-                <option value="opsi2">Opsi 2: Raport 40% + TKA 60%</option>
-            </select>
+        <div id="page-intro" class="page active">
+            <div class="welcome-msg">Hellou warga mpc!</div>
+            <div class="intro-text">
+                Selamat datang di portal perhitungan mandiri skor estimasi <strong>SPMB Jalur Prestasi</strong>. 
+                Silakan pilih jalur yang akan Anda tempuh untuk mulai menghitung potensi nilai akhir Anda.
+            </div>
+            <button class="btn" onclick="showPage('page-menu')">Lanjut ke Pilihan Jalur</button>
+            <span class="warning-sign">⚠️ Nilai akhir hanya perkiraan!</span>
+            <span class="intro-watermark">Made by ur greatest alumni –arvnn</span>
         </div>
 
-        <h3>1. Input Nilai Raport Per Semester</h3>
-        <div id="semester-containers"></div>
-
-        <h3>2. Input Nilai TKA</h3>
-        <div class="grid-input">
-            <div class="input-group">
-                <label>TKA Bahasa Indonesia</label>
-                <input type="number" id="tka-indo" step="0.01" placeholder="0-100">
-            </div>
-            <div class="input-group">
-                <label>TKA Matematika</label>
-                <input type="number" id="tka-mtk" step="0.01" placeholder="0-100">
-            </div>
+        <div id="page-menu" class="page">
+            <h2>Pilih Jalur Prestasi</h2>
+            <button class="btn btn-full" onclick="startJalur(1)">1. Jalur Prestasi Akademik Raport</button>
+            <button class="btn btn-full" onclick="startJalur(2)">2. Jalur Prestasi Kejuaraan Akademik</button>
+            <button class="btn btn-full" onclick="startJalur(3)">3. Jalur Prestasi Kejuaraan Non Akademik</button>
+            <button class="btn btn-full" onclick="startJalur(4)">4. Jalur Prestasi Kepemimpinan</button>
+            <button class="btn" style="background:#718096" onclick="showPage('page-intro')">Kembali</button>
         </div>
 
-        <button class="calc-btn" onclick="hitungSkorFinal()">Jalankan Hitung Skor</button>
+        <div id="page-raport" class="page">
+            <h2 id="raport-title">Input Nilai Raport</h2>
+            <div id="semester-containers"></div>
+            <button class="btn" onclick="prosesRaport()">Lanjut ke Parameter Akhir</button>
+        </div>
+
+        <div id="page-param-akad" class="page">
+            <h3>Nilai TKA & Tambahan</h3>
+            <div class="grid-input">
+                <div class="input-group">
+                    <label>TKA Bahasa Indonesia</label>
+                    <input type="number" id="tka-indo" step="0.01" placeholder="0-100">
+                </div>
+                <div class="input-group">
+                    <label>TKA Matematika</label>
+                    <input type="number" id="tka-mtk" step="0.01" placeholder="0-100">
+                </div>
+                <div class="input-group" id="group-bobot-jalur1">
+                    <label>Pilih Skema Bobot</label>
+                    <select id="bobot-jalur1">
+                        <option value="opsi1">Raport 50% + TKA 50%</option>
+                        <option value="opsi2">Raport 40% + TKA 60%</option>
+                    </select>
+                </div>
+                <div class="input-group" id="group-sertif-jalur2" style="display:none">
+                    <label>Poin Sertifikat/Piagam</label>
+                    <input type="number" id="poin-sertif-akad" placeholder="Contoh: 15">
+                </div>
+            </div>
+            <button class="btn" onclick="hitungFinalAkad()">Hitung Skor Akhir</button>
+        </div>
+
+        <div id="page-jalur3" class="page">
+            <h2>Jalur Kejuaraan Non Akademik</h2>
+            <div class="grid-input">
+                <div class="input-group">
+                    <label>Nilai Sertifikat Piagam (30%)</label>
+                    <input type="number" id="n-sertif-non" placeholder="0-100">
+                </div>
+                <div class="input-group">
+                    <label>Nilai Uji Kompetensi (70%)</label>
+                    <input type="number" id="n-uji-komp" placeholder="0-100">
+                </div>
+            </div>
+            <button class="btn" onclick="hitungFinalNonAkad()">Hitung Skor Akhir</button>
+        </div>
+
+        <div id="page-jalur4-param" class="page">
+            <h2>Parameter Kepemimpinan</h2>
+            <div class="input-group">
+                <label>Skor Tingkat Jabatan/Sertifikat Organisasi (50%)</label>
+                <input type="number" id="skor-organisasi" placeholder="0-100">
+            </div>
+            <p style="font-size: 11px; color: #718096;">*Nilai ini akan digabung dengan 50% Nilai Raport yang Anda isi.</p>
+            <button class="btn" onclick="hitungFinalLead()">Hitung Skor Akhir</button>
+        </div>
 
         <div id="hasil-kalkulasi" class="result">
-            <h4 style="text-align:center; margin:0; color:#276749;">TOTAL SKOR AKHIR</h4>
+            <h4 style="text-align:center; margin:0; color:#276749;">ESTIMASI SKOR AKHIR</h4>
             <div class="score-display" id="skor-total">0.00</div>
             <div class="details" id="detail-perhitungan"></div>
+            <button class="btn" style="margin-top:20px" onclick="location.reload()">Reset / Hitung Ulang</button>
         </div>
+
     </div>
 
     <script>
-        function showApp() {
-            document.getElementById('intro-screen').style.display = 'none';
-            document.getElementById('main-app').style.display = 'block';
-            window.scrollTo(0, 0);
+        let jalurTerpilih = 0;
+        const daftarMapel = ["IPA", "IPS", "Matematika", "Bahasa Indonesia", "Bahasa Inggris", "SBK", "TIK", "PKN", "PJOK", "Bahasa Arab", "SKI", "Qurdis", "Akidah Akhlak", "Fiqih"];
+
+        function showPage(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('hasil-kalkulasi').style.display = 'none';
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
         }
 
-        // List mapel yang sudah disaring:
-        // - Menggunakan TIK
-        // - Bahasa Sunda, BTQ, PUI, dan Tahfidz DIHAPUS
-        const daftarMapel = [
-            "IPA", "IPS", "Matematika", "Bahasa Indonesia", "Bahasa Inggris",
-            "SBK", "TIK", "PKN", "PJOK",
-            "Bahasa Arab", "SKI", "Qurdis", "Akidah Akhlak", "Fiqih"
-        ];
+        function startJalur(n) {
+            jalurTerpilih = n;
+            if (n === 3) {
+                showPage('page-jalur3');
+            } else {
+                setupRaport();
+                showPage('page-raport');
+            }
+        }
 
-        const container = document.getElementById('semester-containers');
-        for (let sem = 1; sem <= 5; sem++) {
-            let semBox = document.createElement('div');
-            semBox.className = 'semester-box';
-            let html = `<div class="semester-title">SEMESTER ${sem}</div><div class="grid-input">`;
-            daftarMapel.forEach(mapel => {
-                html += `
-                    <div class="input-group">
-                        <label>${mapel}</label>
-                        <input type="number" class="nilai-sem-${sem}" step="0.01" min="0" max="100" oninput="updateAvg(${sem})">
-                    </div>`;
-            });
-            html += `</div><div class="live-sem-avg" id="avg-display-${sem}">r${sem} (Rata-rata): -</div>`;
-            semBox.innerHTML = html;
-            container.appendChild(semBox);
+        function setupRaport() {
+            const container = document.getElementById('semester-containers');
+            if (container.innerHTML !== "") return;
+            for (let sem = 1; sem <= 5; sem++) {
+                let semBox = document.createElement('div');
+                semBox.className = 'semester-box';
+                let html = `<div class="semester-title">SEMESTER ${sem}</div><div class="grid-input">`;
+                daftarMapel.forEach(mapel => {
+                    html += `<div class="input-group"><label>${mapel}</label><input type="number" class="nilai-sem-${sem}" step="0.01" min="0" max="100" oninput="updateAvg(${sem})"></div>`;
+                });
+                html += `</div><div class="live-sem-avg" id="avg-display-${sem}">r${sem}: -</div>`;
+                semBox.innerHTML = html;
+                container.appendChild(semBox);
+            }
         }
 
         function updateAvg(sem) {
             let inputs = document.querySelectorAll(`.nilai-sem-${sem}`);
             let total = 0, count = 0;
-            inputs.forEach(i => {
-                let v = parseFloat(i.value);
-                if (!isNaN(v)) { total += v; count++; }
-            });
+            inputs.forEach(i => { let v = parseFloat(i.value); if (!isNaN(v)) { total += v; count++; } });
             let display = document.getElementById(`avg-display-${sem}`);
-            if (count > 0) {
-                let rerata = total / count;
-                display.innerHTML = `r${sem} (Rata-rata): <span style="color:#2b6cb0">${rerata.toFixed(2)}</span>`;
-                return rerata;
-            }
-            display.innerText = `r${sem} (Rata-rata): -`;
-            return 0;
+            if (count > 0) { display.innerHTML = `r${sem}: <span style="color:#2b6cb0">${(total/count).toFixed(2)}</span>`; return total/count; }
+            display.innerText = `r${sem}: -`; return 0;
         }
 
-        function hitungSkorFinal() {
-            let r = [];
+        function prosesRaport() {
+            if (jalurTerpilih === 1) {
+                document.getElementById('group-bobot-jalur1').style.display = 'block';
+                document.getElementById('group-sertif-jalur2').style.display = 'none';
+                showPage('page-param-akad');
+            } else if (jalurTerpilih === 2) {
+                document.getElementById('group-bobot-jalur1').style.display = 'none';
+                document.getElementById('group-sertif-jalur2').style.display = 'block';
+                showPage('page-param-akad');
+            } else if (jalurTerpilih === 4) {
+                showPage('page-jalur4-param');
+            }
+        }
+
+        function getSumR() {
+            let sum = 0;
             for (let sem = 1; sem <= 5; sem++) {
                 let inputs = document.querySelectorAll(`.nilai-sem-${sem}`);
-                let total = 0, count = 0;
-                inputs.forEach(i => {
-                    let v = parseFloat(i.value);
-                    if (!isNaN(v)) { total += v; count++; }
-                });
-                if (count === 0) { alert(`Semester ${sem} belum diisi!`); return; }
-                r[sem] = total / count;
+                let t = 0, c = 0;
+                inputs.forEach(i => { let v = parseFloat(i.value); if (!isNaN(v)) { t += v; c++; } });
+                if (c === 0) return -1;
+                sum += (t/c);
             }
+            return sum;
+        }
 
-            let tkaIndo = parseFloat(document.getElementById('tka-indo').value);
-            let tkaMtk = parseFloat(document.getElementById('tka-mtk').value);
+        // HITUNG JALUR 1 & 2
+        function hitungFinalAkad() {
+            let sumR = getSumR();
+            if (sumR === -1) { alert("Lengkapi nilai raport semester 1-5!"); return; }
+            
+            let tkaI = parseFloat(document.getElementById('tka-indo').value) || 0;
+            let tkaM = parseFloat(document.getElementById('tka-mtk').value) || 0;
+            let totalTKA = tkaI + tkaM;
+            let final = 0, det = "";
 
-            if (isNaN(tkaIndo) || isNaN(tkaMtk)) { alert("Isi nilai TKA!"); return; }
-
-            let totalR = r[1] + r[2] + r[3] + r[4] + r[5];
-            let totalTKA = tkaIndo + tkaMtk;
-            let opsi = document.getElementById('bobot').value;
-            let final = 0, bobotR = 0, bobotT = 0;
-
-            if (opsi === "opsi2") {
-                final = (totalR * 0.4) + (totalTKA * 0.6);
-                bobotR = 40; bobotT = 60;
+            if (jalurTerpilih === 1) {
+                let opt = document.getElementById('bobot-jalur1').value;
+                if (opt === "opsi2") {
+                    final = (sumR * 0.4) + (totalTKA * 0.6);
+                    det = `Jalur Akademik (40:60)<br>Raport: ${(sumR*0.4).toFixed(2)} | TKA: ${(totalTKA*0.6).toFixed(2)}`;
+                } else {
+                    final = (sumR * 0.5) + (totalTKA * 0.5);
+                    det = `Jalur Akademik (50:50)<br>Raport: ${(sumR*0.5).toFixed(2)} | TKA: ${(totalTKA*0.5).toFixed(2)}`;
+                }
             } else {
-                final = (totalR * 0.5) + (totalTKA * 0.5);
-                bobotR = 50; bobotT = 50;
+                let s = parseFloat(document.getElementById('poin-sertif-akad').value) || 0;
+                final = (sumR * 0.5) + (totalTKA * 0.5) + s;
+                det = `Jalur Kejuaraan Akad<br>Base (R+TKA 50:50): ${(sumR*0.5 + totalTKA*0.5).toFixed(2)}<br>Poin Sertifikat: +${s}`;
             }
+            tampilkanHasil(final, det);
+        }
 
+        // HITUNG JALUR 3
+        function hitungFinalNonAkad() {
+            let s = parseFloat(document.getElementById('n-sertif-non').value) || 0;
+            let u = parseFloat(document.getElementById('n-uji-komp').value) || 0;
+            let final = (s * 0.3) + (u * 0.7);
+            tampilkanHasil(final, `Sertifikat (30%): ${(s*0.3).toFixed(2)}<br>Uji Komp (70%): ${(u*0.7).toFixed(2)}`);
+        }
+
+        // HITUNG JALUR 4
+        function hitungFinalLead() {
+            let sumR = getSumR();
+            if (sumR === -1) { alert("Lengkapi nilai raport semester 1-5!"); return; }
+            let sLead = parseFloat(document.getElementById('skor-organisasi').value) || 0;
+            let final = (sLead * 0.5) + (sumR * 0.5);
+            tampilkanHasil(final, `Skor Organisasi (50%): ${(sLead*0.5).toFixed(2)}<br>Skor Raport (50%): ${(sumR*0.5).toFixed(2)}`);
+        }
+
+        function tampilkanHasil(score, detail) {
             document.getElementById('hasil-kalkulasi').style.display = 'block';
-            document.getElementById('skor-total').innerText = final.toFixed(2);
-            document.getElementById('detail-perhitungan').innerHTML = `
-                <strong>Skema: Raport ${bobotR}% + TKA ${bobotT}%</strong><br>
-                Total r1-r5: ${totalR.toFixed(2)} (${bobotR}% = ${(totalR * (bobotR/100)).toFixed(2)})<br>
-                Total TKA: ${totalTKA.toFixed(2)} (${bobotT}% = ${(totalTKA * (bobotT/100)).toFixed(2)})
-            `;
+            document.getElementById('skor-total').innerText = score.toFixed(2);
+            document.getElementById('detail-perhitungan').innerHTML = detail;
             window.scrollTo(0, document.body.scrollHeight);
         }
     </script>
